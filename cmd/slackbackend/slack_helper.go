@@ -21,7 +21,6 @@ func InitBackend() {
 	if err != nil {
 		log.Println("Error loading slack webhook\n" + err.Error())
 	}
-	fmt.Printf("Slack webhook url is: %v", webhookUrl)
 }
 
 func checkSlackMessageEnable() {

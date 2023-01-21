@@ -10,6 +10,7 @@ import (
 	"math/big"
 	"math/rand"
 	"os"
+	"slackbackend"
 	"strconv"
 	"strings"
 	"time"
@@ -102,6 +103,9 @@ func (c *CLI) mow(argv []string) error {
 	if err != nil {
 		return err
 	}
+
+	// parse the slack backend
+	slackbackend.InitBackend()
 
 	if opts.List {
 		cowPaths, err := cowsay.Cows()
@@ -218,6 +222,7 @@ func (c *CLI) mowmow(opts *options, args []string) error {
 		return super.RunSuperCow(phrase, opts.Bold, o...)
 	}
 
+	slackbackend.SendSlackMessage(phrase)
 	say, err := cowsay.Say(phrase, o...)
 	if err != nil {
 		var notfound *cowsay.NotFound

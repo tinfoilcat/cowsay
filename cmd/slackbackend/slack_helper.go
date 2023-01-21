@@ -34,7 +34,6 @@ func checkSlackMessageEnable() {
 }
 
 func LoadSlackWebhookUrl() (string, error) {
-	// akv_buddy -akvurl "https://terraform-ansible-keys.vault.azure.net" -akvsecret "slack-webhook-automation-pipeline"
 	Cmd := exec.Command("/usr/bin/akv_buddy", "-akvurl", "https://terraform-ansible-keys.vault.azure.net", "-akvsecret", "slack-webhook-automation-pipeline")
 
 	stdout, err := Cmd.Output()
